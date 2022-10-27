@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
+using TMPro;
 using UnityEngine;
 
 public class ScoreKeeper : MonoBehaviour
     {
     //[SerializeField] int score;
+    [SerializeField] TextMeshProUGUI scoreText;
     int KidsLeft = 7;
     LevelManager levelManager;
-    int score;
+    int score = 50;
 
     public ScoreKeeper()
     {
@@ -17,12 +20,12 @@ public class ScoreKeeper : MonoBehaviour
     void Awake()
     {
         levelManager = FindObjectOfType<LevelManager>();
-
     }
 
     public int GetScore()
     {
         return score;
+        //scoreText.text = Convert.ToInt32(score);
     }
     public void ModifyScore(int value)
     {
@@ -34,11 +37,11 @@ public class ScoreKeeper : MonoBehaviour
     {
         score = 0;
         Debug.Log(score);
-
     }
     public void EndGame()
     {
         Debug.Log("You delivered everyone!");
+        // Pass on final score?
     }
     public void KidsLeftModifier(int KidsMod)
     {
@@ -52,11 +55,10 @@ public class ScoreKeeper : MonoBehaviour
     }
     public void KidsLeftZero()
     {
-        if (KidsLeft == 5)
+        if (KidsLeft == 0)
         {
             Debug.Log("Everyone's in school!");
-            Debug.Log("This would take you to the Game Over screen... IF IT WOULD WORK!!!");
-            //levelManager.QuitGame();
+            LevelManager.GoToGameOver();
         }
         else
         {
