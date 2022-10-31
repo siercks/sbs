@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -16,13 +17,15 @@ public class FinalScorePassthru : MonoBehaviour
     }
     void Start()
     {
-        
+        //
     }
 
     // Update is called once per frame
     void Update()
     {
         //scoreKeeper.GetScore();
-        finalScoreText.text = scoreKeeper.GetScore().ToString();
+        //DontDestroyOnLoad(scoreKeeper);
+        //finalScoreText.text = scoreKeeper.GetScore().ToString();
+        finalScoreText.text = Convert.ToString(PlayerPrefs.GetInt("Player Score"));
     }
 }

@@ -17,7 +17,6 @@ public class Collision : MonoBehaviour
     // Still not viable.
     void Awake()
     {
-        //levelManager = FindObjectOfType<LevelManager>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>(); // This is correct and how it seems to be working just fine.
     }
 

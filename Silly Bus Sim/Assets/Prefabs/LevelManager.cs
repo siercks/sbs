@@ -2,16 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class LevelManager : MonoBehaviour
 {
+    //ScoreKeeper scoreKeeper;
+    AudioScript audioScript;
+    public static GameObject musicObject;
     public LevelManager()
     {
         //
     }
+    void Awake()
+    {
+        audioScript = FindObjectOfType<AudioScript>();
+        //scoreKeeper = FindObjectOfType<ScoreKeeper>(); // I had this in here but do I need it? Trying now.
+        //audioScript.MainMenuMusic();
+    }
+    void Start()
+    {
+        Invoke ("GoToMainMenu", 5f);
+    }
+
     public static void LoadGame()
     {
-        Debug.Log("Game main screen note");
         SceneManager.LoadScene("Level1"); // Level 1 is the second scene.
     }
     public static void GoToMainMenu()
@@ -20,19 +34,15 @@ public class LevelManager : MonoBehaviour
     }
     public static void GoToGameOver()
     {
-        Debug.Log("This would take you to the Game Over screen... IF IT WOULD WORK!!!");
         SceneManager.LoadScene("GameOver");
     }
     public static void GoToReading()
     {
-        Debug.Log("Reading screen note");
         SceneManager.LoadScene("Reading");
-        // This is a placeholder until I add a Reading scene.
+        //DontDestroyOnLoad(musicObject);
     }
     public static void QuitGame()
     {
-        Debug.Log("Quit screen note");
-        Debug.Log("You are quitting now.");
         Application.Quit();
     }
 }

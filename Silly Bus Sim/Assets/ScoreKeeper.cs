@@ -10,7 +10,8 @@ public class ScoreKeeper : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText;
     int KidsLeft = 7;
     LevelManager levelManager;
-    int score = 50;
+    int score = 0;
+    float bonusTimer = 0f;
 
     public ScoreKeeper()
     {
@@ -24,8 +25,8 @@ public class ScoreKeeper : MonoBehaviour
 
     public int GetScore()
     {
+        PlayerPrefs.SetInt("Player Score", score);
         return score;
-        //scoreText.text = Convert.ToInt32(score);
     }
     public void ModifyScore(int value)
     {
@@ -38,10 +39,10 @@ public class ScoreKeeper : MonoBehaviour
         score = 0;
         Debug.Log(score);
     }
-    public void EndGame()
+    public void EndGame(int score)
     {
         Debug.Log("You delivered everyone!");
-        // Pass on final score?
+        // This needed at all, after I used another method? Probably not.
     }
     public void KidsLeftModifier(int KidsMod)
     {
@@ -55,7 +56,7 @@ public class ScoreKeeper : MonoBehaviour
     }
     public void KidsLeftZero()
     {
-        if (KidsLeft == 0)
+        if (KidsLeft == 5)
         {
             Debug.Log("Everyone's in school!");
             LevelManager.GoToGameOver();
@@ -64,6 +65,10 @@ public class ScoreKeeper : MonoBehaviour
         {
             return;
         }
+    }
+    public int BonusTimer()
+    {
+        return (int)bonusTimer;
     }
 
     }

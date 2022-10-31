@@ -23,12 +23,9 @@ public class UIdisplay : MonoBehaviour
         //
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //scoreText.text = scoreKeeper.GetScore().ToString("000");
         scoreText.text = scoreKeeper.GetScore().ToString();
-        //scoreText.text = ScoreKeeper.GetScore();
         kidsLeftText.text = scoreKeeper.KidsLeftValue().ToString();
     }
 }
