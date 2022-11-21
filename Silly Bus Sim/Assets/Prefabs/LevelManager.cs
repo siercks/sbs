@@ -21,7 +21,7 @@ public class LevelManager : MonoBehaviour
     }
     void Start()
     {
-        Invoke ("GoToMainMenu", 5f);
+        Invoke ("GoToMainMenu", 5f); // This doing anything?
     }
 
     public static void LoadGame()

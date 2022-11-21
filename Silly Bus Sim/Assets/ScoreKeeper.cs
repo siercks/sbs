@@ -7,8 +7,8 @@ using UnityEngine;
 public class ScoreKeeper : MonoBehaviour
     {
     //[SerializeField] int score;
-    [SerializeField] TextMeshProUGUI scoreText;
-    int KidsLeft = 7;
+    //[SerializeField] TextMeshProUGUI scoreText;
+    int KidsLeft = 3;
     LevelManager levelManager;
     int score = 0;
     float bonusTimer = 0f;
@@ -56,7 +56,7 @@ public class ScoreKeeper : MonoBehaviour
     }
     public void KidsLeftZero()
     {
-        if (KidsLeft == 5)
+        if (KidsLeft == 0)
         {
             Debug.Log("Everyone's in school!");
             LevelManager.GoToGameOver();
